@@ -12,7 +12,7 @@ const Sidebar = ({ children }) => {
             <div className="fixed w-20 h-screen p-4 bg-W border-r[1px] flex flex-col justify-between">
                 <div className="flex flex-col items-center">
                     <Link href={'/'}>
-                        <div className="bg-rose-300	 p-4 text-rose-500  rounded-lg inline-block hover:bg-zinc-900 hover:text-red-400/100 transition-colors delay-50">
+                        <div className="bg-stone-800 p-4 text-rose-500  rounded-lg inline-block  hover:bg-rose-400 hover:shadow-2xl hover:text-red-900/100 transition-colors delay-50">
                             <RxShadow size={20} />
                         </div>
                     </Link>
