@@ -37,7 +37,7 @@ const BarChart = () => {
                 {
                     label: ['Sales $'],
                     data: myArray, // js func to get data
-                    backgroundColor: '#63f990',
+                    backgroundColor: '#ababab',
                     borderRadius: '15'
                 }
             ]

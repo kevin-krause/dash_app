@@ -18,7 +18,7 @@ const TopCards = () => {
                     <p className="text-gray-600">YTD Revenue</p>
                 </div>
                 <p className="bg-green-200 flex justify-center items-center p-2 rounded-lg">
-                    <span className="text-green-700 text-lg">+7%</span>
+                    <span className="text-green-700 text-lg">+37%</span>
                 </p>
             </div>
             <div className="bg-white flex justify-between w-full border p-4 rounded-lg">
@@ -27,7 +27,7 @@ const TopCards = () => {
                     <p className="text-gray-600">Custumers</p>
                 </div>
                 <p className="bg-green-200 flex justify-center items-center p-2 rounded-lg">
-                    <span className="text-green-700 text-lg">+18%</span>
+                    <span className="text-green-700 text-lg">+13%</span>
                 </p>
             </div>
         </div>

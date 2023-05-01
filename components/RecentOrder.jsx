@@ -11,7 +11,7 @@ const RecentOrder = () => {
                         className="bg-green-200 p-5 rounded-md"
                         style={{ width: '120px' }}
                     >
-                        <p className="font-bold text-green-700 text-center whitespace-nowrap">
+                        <p className=" text-green-700 text-center whitespace-nowrap">
                             $ 5049,00
                         </p>
                     </span>
@@ -32,7 +32,7 @@ const RecentOrder = () => {
                         className="bg-green-200 p-5 rounded-md"
                         style={{ width: '120px' }}
                     >
-                        <p className="font-bold text-green-700 text-center whitespace-nowrap max-w-prose">
+                        <p className=" text-green-700 text-center whitespace-nowrap max-w-prose">
                             $ 1000,00
                         </p>
                     </span>
@@ -51,7 +51,7 @@ const RecentOrder = () => {
                         className="bg-green-200 p-5 rounded-md"
                         style={{ width: '120px' }}
                     >
-                        <p className="font-bold text-green-700 text-center whitespace-nowrap">
+                        <p className=" text-green-700 text-center whitespace-nowrap">
                             $ 49,00
                         </p>
                     </span>
@@ -70,7 +70,7 @@ const RecentOrder = () => {
                         className="bg-green-200 p-5 rounded-md"
                         style={{ width: '120px' }}
                     >
-                        <p className="font-bold text-green-700 text-center whitespace-nowrap">
+                        <p className=" text-green-700 text-center whitespace-nowrap">
                             $ 6069,00
                         </p>
                     </span>
@@ -91,7 +91,7 @@ const RecentOrder = () => {
                         className="bg-green-200 p-5 rounded-md"
                         style={{ width: '120px' }}
                     >
-                        <p className="font-bold text-green-700 text-center whitespace-nowrap">
+                        <p className=" text-green-700 text-center whitespace-nowrap">
                             $ 6,00
                         </p>
                     </span>
