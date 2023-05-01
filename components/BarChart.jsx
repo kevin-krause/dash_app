@@ -9,6 +9,7 @@ import {
     Tooltip,
     Legend
 } from 'chart.js'
+import { title } from 'process'
 
 chartjs.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
@@ -26,10 +27,23 @@ const BarChart = () => {
                 {
                     label: ['Sales $'],
                     data: [15322, 43534, 54353, 35345, 3534, 45445, 5345],
-                    borderColor: 'rgb(248, 113, 113)',
-                    backgroundColor: 'rgb(248, 113, 113, 0.4)'
+                    backgroundColor: '#3f8363',
+                    borderRadius: '15'
                 }
             ]
+        })
+        setChartOptions({
+            plguins: {
+                legend: {
+                    prosition: 'top'
+                },
+                title: {
+                    display: true,
+                    text: 'Daily Revenue'
+                }
+            },
+            maintainAspectRatio: false,
+            responsive: true
         })
     }, [])
 
