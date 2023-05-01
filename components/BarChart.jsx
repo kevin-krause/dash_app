@@ -13,6 +13,14 @@ import { title } from 'process'
 
 chartjs.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
+function randomArray() {
+    const arr = []
+    for (let i = 0; i < 7; i++) {
+        arr.push(Math.floor(Math.random() * 10000))
+    }
+    return arr
+}
+
 const BarChart = () => {
     const [chartData, setChartData] = useState({
         datasets: []
@@ -20,14 +28,16 @@ const BarChart = () => {
 
     const [chartOptions, setChartOptions] = useState({})
 
+    const myArray = randomArray()
+
     useEffect(() => {
         setChartData({
             labels: ['Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat', 'Sun'],
             datasets: [
                 {
                     label: ['Sales $'],
-                    data: [15322, 43534, 54353, 35345, 3534, 45445, 5345],
-                    backgroundColor: '#3f8363',
+                    data: myArray, // js func to get data
+                    backgroundColor: '#63f990',
                     borderRadius: '15'
                 }
             ]

@@ -1,3 +1,36 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Hide the default scrollbar */
+::-webkit-scrollbar {
+    display: none;
+}
+
+/* Define custom properties for scrollbar width and color */
+:root {
+    --scrollbar-width: 8px;
+    --scrollbar-color: #c1c1c1;
+}
+
+/* Style the scrollbar track */
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+/* Style the scrollbar thumb */
+::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-color);
+    border-radius: 20px; /* Use a large value to make the scrollbar rounded */
+}
+
+/* Style the scrollbar thumb on hover */
+::-webkit-scrollbar-thumb:hover {
+    background-color: #a1a1a1;
+}
+
+/* Style the scrollbar width and height */
+::-webkit-scrollbar {
+    width: var(--scrollbar-width);
+    height: var(--scrollbar-width);
+}
