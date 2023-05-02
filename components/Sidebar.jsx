@@ -18,25 +18,25 @@ const Sidebar = ({ children }) => {
                     </Link>
                     <span className="border-b-[1px] border-gray-200 w-full p-2"></span>
 
-                    <Link href={'/'}>
+                    <Link href={'/Dashboard'}>
                         <div className="bg-gray-200/80 p-4 text-green-800 rounded-lg inline-block mt-4 hover:bg-green-900 hover:shadow-2xl hover:text-green-100/100 transition-colors delay-50">
                             <RxDashboard size={20} />
                         </div>
                     </Link>
 
-                    <Link href={'/people'}>
+                    <Link href={'/People'}>
                         <div className="bg-gray-200/80 p-4 text-green-800 rounded-lg inline-block mt-4 hover:bg-green-900 hover:shadow-2xl hover:text-green-100/100 transition-colors delay-50">
                             <TbUsers size={20} />
                         </div>
                     </Link>
 
-                    <Link href={'/cash-flow'}>
+                    <Link href={'/CashFlow'}>
                         <div className="bg-gray-200/80 p-4 text-green-800 rounded-lg inline-block mt-4 hover:bg-green-900 hover:shadow-2xl hover:text-green-100/100 transition-colors delay-50">
                             <RiMoneyDollarCircleLine size={20} />
                         </div>
                     </Link>
 
-                    <Link href={'/settings'}>
+                    <Link href={'/Settings'}>
                         <div className="bg-gray-200/80 p-4 text-green-800 rounded-lg inline-block mt-4 hover:bg-green-900 hover:shadow-2xl hover:text-green-100/100 transition-colors delay-50">
                             <FiSettings size={20} />
                         </div>
