@@ -37,7 +37,15 @@ const BarChart = () => {
                 {
                     label: ['Sales $'],
                     data: myArray, // js func to get data
-                    backgroundColor: '#ababab',
+                    backgroundColor: [
+                        'rgba(255, 225, 10, 1)',
+                        'rgba(255, 320, 160, 1)',
+                        'rgba(255, 230, 40, 1)',
+                        'rgba(255, 245, 130, 1)',
+                        'rgba(255, 240, 100, 1)',
+                        'rgba(255, 235, 70, 1)'
+                    ],
+                    borderColor: '#FFC000',
                     borderRadius: '15'
                 }
             ]
@@ -59,8 +67,12 @@ const BarChart = () => {
 
     return (
         <>
-            <div className="w-full md:col-span-2 relative lg:h-[70vh] h-[50vh] m-auto p-4 rounded-lg bg-white">
-                <Bar data={chartData} options={chartOptions} />
+            <div className="w-full md:col-span-2 relative lg:h-[70vh] h-[50vh] m-auto p-6 rounded-lg bg-white">
+                <h3 className=" py-2 px-4  text-green-300 bg-zinc-800 m-4 rounded shadow-md">
+                    Sales Performance
+                </h3>
+                <Bar className='pb-20' data={chartData} options={chartOptions} />
+                <div className="text-zinc-600 bg-gray-100  rounded-lg mt-5"></div>
             </div>
         </>
     )
