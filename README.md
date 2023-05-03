@@ -6,4 +6,4 @@ yarn dev
 pnpm dev
 ```
 
-![1682978155810](image/README/1682978155810.png)
+![1683084178134](image/README/1683084178134.png)
