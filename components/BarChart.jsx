@@ -67,12 +67,16 @@ const BarChart = () => {
 
     return (
         <>
-            <div className="w-full md:col-span-2 relative lg:h-[70vh] h-[50vh] m-auto p-6 rounded-lg bg-white">
-                <h3 className=" py-2 px-4  text-green-300 bg-zinc-800 m-4 rounded shadow-md">
+            <div className="w-full md:col-span-2 relative lg:h-[70vh] h-[50vh] m-auto p-6 rounded-lg bg-zinc-700 md:pb-[90px] border border-zinc-500 ">
+                <h3 className=" py-2 px-4  text-green-300 bg-zinc-800 m-4 rounded shadow-md text-center">
                     Sales Performance
                 </h3>
-                <Bar className='pb-20' data={chartData} options={chartOptions} />
-                <div className="text-zinc-600 bg-gray-100  rounded-lg mt-5"></div>
+                <Bar
+                    className=" bg-zinc-800 p-6 rounded-lg w-auto"
+                    data={chartData}
+                    options={chartOptions}
+                />
+                <div className="text-zinc-600  rounded-lg mt-5"></div>
             </div>
         </>
     )
