@@ -67,7 +67,7 @@ const BarChart = () => {
 
     return (
         <>
-            <div className="w-full md:col-span-2 relative lg:h-[70vh] h-[50vh] m-auto p-6 rounded-lg bg-zinc-700 md:pb-[90px] border border-zinc-500 ">
+            <div className="w-full md:col-span-2 relative lg:h-[70vh] h-[50vh] m-auto p-6 rounded-lg bg-zinc-700 md:pb-[90px] border border-zinc-500 hover:shadow-lg">
                 <h3 className=" py-2 px-4  text-green-300 bg-zinc-800 m-4 rounded shadow-md text-center">
                     Sales Performance
                 </h3>
