@@ -1,52 +1,90 @@
 import React, { useRef, useLayoutEffect, useState } from 'react'
 
 const TopCards = () => {
-    const dailyRev = useRef()
+    const dolar = useRef()
+    const variacao = useRef()
+    const news = useRef()
+    const autor = useRef()
+
+    const apiKey = '5ae38324e75747a386e6d3619f403bab'
+
+    const [rates, setRates] = useState(null)
 
     useLayoutEffect(() => {
-        const daily = 10
-
-        dailyRev.current.textContent = `$ ${daily}`
-    })
+        Promise.all([
+            fetch(
+                'https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL'
+            ).then(response => response.json()),
+            fetch(
+                `https://newsapi.org/v2/top-headlines?sources=google-news-br&apiKey=${apiKey}`
+            ).then(response => response.json())
+        ])
+            .then(([ratesData, newsData]) => {
+                setRates(ratesData)
+                dolar.current.textContent = `R$ ${ratesData.USDBRL.high}`
+                variacao.current.textContent = `%${
+                    Number(ratesData.USDBRL.varBid) * 1000
+                }`
+                news.current.textContent = newsData.articles[0].title
+                autor.current.href = newsData.articles[0].url
+                console.log(newsData.articles[0].url)
+            })
+            .catch(error => console.error(error))
+    }, [])
 
     return (
         <>
             <div className="grid lg:grid-cols-5 gap-4 p-4">
-                <div className="lg:col-span-2 col-span-1 bg-zinc-800 flex justify-between w-full border border-zinc-300 p-4 rounded-lg">
+                <div className="lg:col-span-2 col-span-1 bg-zinc-800 flex justify-between border border-zinc-500 hover:border-zinc-100 p-4 rounded-lg transition delay-30 duration-100  ">
                     <div className="flex flex-col w-full pb-4">
                         <p
-                            ref={dailyRev}
+                            ref={dolar}
                             id="daily-rev"
                             className="text-2xl text-gray-100 font-bold"
+                        ></p>
+                        <p className="text-gray-400">Dólar hoje</p>
+                    </div>
+                    <div className="flex">
+                        <p className="bg-green-200 items-center rounded-lg m-[20px] mt-[100px] mb-[100px]">
+                            <span
+                                ref={variacao}
+                                className="text-green-700 text-lg p-6"
+                            ></span>
+                        </p>
+                    </div>
+                </div>
+
+                <div className="lg:col-span-2 col-span-1  flex justify-between w-full border  hover: p-4 rounded-lg bg-zinc-800 transition delay-30 duration-100 border-zinc-500 hover:border-zinc-100  ">
+                    <div className="flex flex-col w-full pb-4">
+                        <p
+                            ref={news}
+                            className="text-2xl text-gray-100 font-bold"
                         >
-                            $2,435.22
+                            Notícia
                         </p>
-                        <p className="text-gray-400">Daily Revenue</p>
+                        <a
+                            id={autor}
+                            href=""
+                            target="_blank"
+                            rel="noreferrer"
+                            className="text-gray-400 pt-1 transition delay-30 duration-100 hover:text-green-200 mr-auto"
+                        >
+                            Notícia completa
+                        </a>
                     </div>
-                    <p className="bg-green-200 flex justify-center items-center p-2 rounded-lg">
-                        <span className="text-green-700 text-lg">+18%</span>
-                    </p>
+                    <p className="bg-green-200 flex justify-center items-center pr-2 pl-[] rounded-lg"></p>
                 </div>
-                <div className="lg:col-span-2 col-span-1  flex justify-between w-full border border-zinc-300 p-4 rounded-lg bg-zinc-800">
+                <div className="bg-zinc-800 flex justify-between w-full border p-4 rounded-lg transition delay-30 duration-100 border-zinc-500 hover:border-zinc-100">
                     <div className="flex flex-col w-full pb-4">
                         <p className="text-2xl text-gray-100 font-bold">
-                            $1,467,456.44
+                            content here
                         </p>
-                        <p className="text-gray-400">YTD Revenue</p>
+                        <p className="text-gray-400"></p>
                     </div>
                     <p className="bg-green-200 flex justify-center items-center p-2 rounded-lg">
-                        <span className="text-green-700 text-lg">+37%</span>
-                    </p>
-                </div>
-                <div className="bg-zinc-800 flex justify-between w-full border border-zinc-300 p-4 rounded-lg">
-                    <div className="flex flex-col w-full pb-4">
-                        <p className="text-2xl text-gray-100 font-bold">
-                            4,667
-                        </p>
-                        <p className="text-gray-400">Custumers</p>
-                    </div>
-                    <p className="bg-green-200 flex justify-center items-center p-2 rounded-lg">
-                        <span className="text-green-700 text-lg">+13%</span>
+                        <span className="text-green-700 text-center">
+                            put content here
+                        </span>
                     </p>
                 </div>
             </div>
