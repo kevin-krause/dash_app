@@ -65,21 +65,20 @@ const BarChart = () => {
     }, [])
 
     return (
-        <main className="bg-zinc-900 min-h-screen  w-auto">
-            <div className="flex justify-between w-auto pb-1 pt-6 p-6 ml-6  mr-6">
+        <main className=" md:min-h-screen  md:w-auto md:bg-zinc-800 m-auto bg-zinc-800 min-h-screen">
+            <div className="flex md:justify-between w-auto pb-1 pt-6 p-6 ml-6  mr-6  flex-col md:flex-row">
                 <span className="text-green-300">Dashboard de vendas</span>
                 <span className="text-green-300">X/X/202X</span>
             </div>
 
-            <div className="flex-row ml-10 mr-10 mt-5 w-auto bg-zinc-700 rounded-md pb-[30px] shadow-md ">
+            <div className="md:flex-row ml-10 mr-10 mt-5 w-auto bg-zinc-700 rounded-md pb-[30px]  shadow-md  md:w-auto">
                 <div className=" flex p-6">
                     <h3 className="text-green-300 bg-zinc-950 pl-4 pr-4 pt-1 pb-1 rounded shadow-xl flex-row">
                         Relatório
                     </h3>
                 </div>
-
-                <div>
-                    <div className=" flex ">
+                <div className=''>
+                    <div className=" flex-col m-auto items-center ">
                         <div className="text-zinc-600 bg-zinc-900 border-2 border-green-300 w-1/2 pt-1 pb-1 rounded  mt-5 md:mt-0 hover:shadow hover:shadow-green-400 ml-6 transition delay-50 duration-300">
                             <h3 className="inline-block py-2 px-4  text-green-300 bg-zinc-950 m-4 rounded shadow-md">
                                 Sales Performance
@@ -138,6 +137,7 @@ const BarChart = () => {
                         </div>
                     </div>
                 </div>
+                --
             </div>
         </main>
     )
