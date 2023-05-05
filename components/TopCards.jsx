@@ -1,7 +1,7 @@
 import React, { useRef, useLayoutEffect, useState } from 'react'
 
 const TopCards = () => {
-    const dolar = useRef()
+    const salesRef = useRef()
     const variacao = useRef()
     const news = useRef()
     const autor = useRef()
@@ -17,16 +17,24 @@ const TopCards = () => {
             ).then(response => response.json()),
             fetch(
                 `https://newsapi.org/v2/top-headlines?sources=google-news-br&apiKey=${apiKey}`
-            ).then(response => response.json())
+            ).then(response => response.json()),
+            fetch('http://localhost:5000/generate_data').then(response =>
+                response.json()
+            )
         ])
-            .then(([ratesData, newsData]) => {
+
+            .then(([ratesData, newsData, sales]) => {
                 setRates(ratesData)
-                dolar.current.textContent = `R$ ${ratesData.USDBRL.high}`
+                const totalSales = sales.reduce(
+                    (acc, item) => acc + parseInt(item.sales),
+                    0
+                )
+                console.log()
+                salesRef.current.textContent = `R$ ${totalSales}`
                 variacao.current.textContent = `%${
                     Number(ratesData.USDBRL.varBid) * 1000
                 }`
                 news.current.textContent = newsData.articles[0].title
-                autor.current.href = newsData.articles[0].url
                 console.log(newsData.articles[0].url)
             })
             .catch(error => console.error(error))
@@ -38,11 +46,11 @@ const TopCards = () => {
                 <div className="lg:col-span-2 col-span-1 bg-zinc-800 flex justify-between border border-zinc-500 hover:border-zinc-100 p-4 rounded-lg transition delay-30 duration-100  ">
                     <div className="flex flex-col w-full pb-4">
                         <p
-                            ref={dolar}
+                            ref={salesRef}
                             id="daily-rev"
                             className="text-2xl text-gray-100 font-bold"
                         ></p>
-                        <p className="text-gray-400">Dólar hoje</p>
+                        <p className="text-gray-400">Total de Vendas</p>
                     </div>
                     <div className="flex">
                         <p className="bg-green-200 items-center rounded-lg m-[20px] mt-[100px] mb-[100px]">

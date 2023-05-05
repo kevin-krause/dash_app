@@ -13,55 +13,66 @@ import { title } from 'process'
 
 chartjs.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
-function randomArray() {
-    const arr = []
-    for (let i = 0; i < 7; i++) {
-        arr.push(Math.floor(Math.random() * 10000))
-    }
-    return arr
+async function fetchData() {
+    const response = await fetch('http://localhost:5000/generate_data')
+    const data = await response.json()
+
+    return data
+}
+
+async function getData() {
+    const data = await fetchData()
+    const dataArray = Array.from(data) // convert data to an array
+    return dataArray.map(item => parseInt(item.sales))
 }
 
 const BarChart = () => {
     const [chartData, setChartData] = useState({
-        datasets: []
+        labels: ['Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat', 'Sun'],
+        datasets: [
+            {
+                label: ['Sales $'],
+                data: [2, 4, 2, 4, 5, 6, 7],
+                backgroundColor: [
+                    'rgba(255, 225, 10, 1)',
+                    'rgba(255, 320, 160, 1)',
+                    'rgba(255, 230, 40, 1)',
+                    'rgba(255, 245, 130, 1)',
+                    'rgba(255, 240, 100, 1)',
+                    'rgba(255, 235, 70, 1)'
+                ],
+                borderColor: '#FFC000',
+                borderRadius: '15'
+            }
+        ]
     })
 
-    const [chartOptions, setChartOptions] = useState({})
-
-    const myArray = randomArray()
+    const [chartOptions, setChartOptions] = useState({
+        plugins: {
+            legend: {
+                position: 'top'
+            },
+            title: {
+                display: true,
+                text: 'Daily Revenue'
+            }
+        },
+        maintainAspectRatio: false,
+        responsive: true
+    })
 
     useEffect(() => {
-        setChartData({
-            labels: ['Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat', 'Sun'],
-            datasets: [
-                {
-                    label: ['Sales $'],
-                    data: myArray, // js func to get data
-                    backgroundColor: [
-                        'rgba(255, 225, 10, 1)',
-                        'rgba(255, 320, 160, 1)',
-                        'rgba(255, 230, 40, 1)',
-                        'rgba(255, 245, 130, 1)',
-                        'rgba(255, 240, 100, 1)',
-                        'rgba(255, 235, 70, 1)'
-                    ],
-                    borderColor: '#FFC000',
-                    borderRadius: '15'
-                }
-            ]
-        })
-        setChartOptions({
-            plguins: {
-                legend: {
-                    prosition: 'top'
-                },
-                title: {
-                    display: true,
-                    text: 'Daily Revenue'
-                }
-            },
-            maintainAspectRatio: false,
-            responsive: true
+        getData().then(myArray => {
+            setChartData(prevData => ({
+                ...prevData,
+                datasets: [
+                    {
+                        ...prevData.datasets[0],
+                        data: getData().data
+                    }
+                ]
+            }))
+            console.log(getData().data)
         })
     }, [])
 
